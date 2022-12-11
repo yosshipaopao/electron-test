@@ -10,8 +10,11 @@ const createWindow = () => {
         },
     });
     ipcMain.handle('ping', () => 'pong');
+    ipcMain.handle('fullscreen', () => win.setFullScreen(true));
+    ipcMain.handle('unfullscreen', () => win.setFullScreen(false));
 
-    win.loadFile('data/index.html');
+    win.loadFile('game/index.html');
+    win.toggleDevTools();
 };
 
 app.whenReady().then(() => {
